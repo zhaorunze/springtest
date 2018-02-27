@@ -26,6 +26,7 @@ public class AreaController {
         return DataEncapUtil.encap(modeMap);
     }
 
+
     @RequestMapping(value = "/getareabyid", method = RequestMethod.GET)
     private Map<String, Object> getAreaById(@RequestParam("areaid") Integer areaId) {
         Map<String, Object> areaMap = DataEncapUtil.getModeMap();
@@ -33,7 +34,13 @@ public class AreaController {
         areaMap.put("area", area);
         return DataEncapUtil.encap(areaMap);
     }
-
+    @RequestMapping(value = "/getareabyname", method = RequestMethod.GET)
+    private Map<String, Object> getAreaByName(@RequestParam("areaname") String areaName) {
+        Map<String, Object> areaMap = DataEncapUtil.getModeMap();
+        List<Area> areaes = areaService.getAreaByName(areaName);
+        areaMap.put("area", areaes);
+        return DataEncapUtil.encap(areaMap);
+    }
     @RequestMapping(value = "/addarea", method = RequestMethod.POST)
     private Map<String, Object> addArea(@RequestBody Area area) {
         areaService.addArea(area);

@@ -20,6 +20,11 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
+    public List<Area> getAreaByName(String areaName) {
+        return areaDao.queryAreaByName(areaName);
+    }
+
+    @Override
     public Area getAreaById(int areaId) {
         return areaDao.queryAreaById(areaId);
     }
