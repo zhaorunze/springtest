@@ -17,17 +17,19 @@
     </select>
 
     <!--  area_name LIKE "%"#{area_Name}"%" -->
+    <!-- area_name LIKE CONCAT(CONCAT('%',#{area_Name},'%')) -->
     <select id="queryAreaByName" resultType="com.imooc.demo.entity.Area">
         SELECT area_id, area_name, priority, create_time, last_edit_time
         FROM tb_area
         WHERE
-        area_name LIKE CONCAT(CONCAT('%',#{area_Name},'%'))
+        area_name LIKE #{area_Name}
     </select>
     <select id="queryAreaByPage" resultType="com.imooc.demo.entity.Area">
         SELECT area_id, area_name, priority, create_time, last_edit_time
         FROM tb_area
         WHERE
-        area_id > #{areaid} LIMIT #{page_size}
+        area_id > #{areaid}
+        ORDER BY area_id asc LIMIT #{page_size}
     </select>
     <insert id="insertArea" useGeneratedKeys="true" keyProperty="areaId"
         keyColumn="area_id" parameterType="com.imooc.demo.entity.Area">

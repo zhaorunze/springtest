@@ -3,6 +3,8 @@ package com.imooc.demo.handler;
 import com.imooc.demo.Constants.Constant;
 import com.imooc.demo.utils.DataEncapUtil;
 import org.apache.tomcat.util.bcel.Const;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +14,7 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     private Map<String,Object> exceptionHandler(HttpServletRequest req, Exception e){
