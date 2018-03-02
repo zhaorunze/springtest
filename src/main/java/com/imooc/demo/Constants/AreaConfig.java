@@ -8,4 +8,5 @@ public class AreaConfig {
     public static final String AREA_ADD = "addarea";
     public static final String AREA_MODIFY = "modifyarea";
     public static final String AREA_REMOVE = "removearea";
+    public static final String FILE_UPLOAD = "upload";
 }
