@@ -50,7 +50,6 @@ public class AreaController {
         Map<String, Object> modeMap = DataEncapUtil.getModeMap();
         List<Area> list = areaService.getAreaList();
         modeMap.put("areaList", list);
-        LOG.info("==============" + "hhh");
         Observable.interval(2, TimeUnit.SECONDS).take(1).subscribe(new Action1<Long>() {
             @Override
             public void call(Long aLong) {
@@ -64,7 +63,6 @@ public class AreaController {
     @RequestMapping(value = AreaConfig.AREA_LIST_PAGE, method = RequestMethod.GET)
     private Map<String, Object> listAreaPage(@RequestParam(value = "areaid", defaultValue = "0") Integer areaid, @RequestParam(value = "limit", defaultValue = Constant.PAGE_SIZE) Integer limit){
         Map<String, Object> modeMap = DataEncapUtil.getModeMap();
-        LOG.info("areaid="+ areaid+", limit=" + limit);
         List<Area> list = areaService.getAreaListPage(areaid, limit);
         modeMap.put("areaList", list);
         return DataEncapUtil.encap(modeMap);
@@ -91,7 +89,7 @@ public class AreaController {
     }
 
     @RequestMapping(value = AreaConfig.AREA_MODIFY, method = RequestMethod.POST)
-    private Map<String, Object> modifyarea(@RequestBody Area area) {
+    private Map<String, Object> modifyarea(@RequestBody() Area area) {
         areaService.modifyArea(area);
         return DataEncapUtil.encap(null);
     }
