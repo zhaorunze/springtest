@@ -45,7 +45,6 @@ public class AreaController {
     @Autowired
     AreaService areaService;
 
-    public static final Logger LOG = LoggerFactory.getLogger(AreaController.class);
     @RequestMapping(value = AreaConfig.AREA_LIST, method = RequestMethod.GET)
     private Map<String, Object> listArea() {
         Map<String, Object> modeMap = DataEncapUtil.getModeMap();
